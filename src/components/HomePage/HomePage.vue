@@ -4,15 +4,16 @@
       <LogoEmployees />
     </div>
 
-
+    <ContentEmployees />
   </div>
 </template>
 
 <script>
 import LogoEmployees from "@/assets/LogoEmployees";
+import ContentEmployees from "@/components/HomePage/ContentEmployees/ContentEmployees";
 export default {
   name: 'HomePage',
-  components: {LogoEmployees},
+  components: {ContentEmployees, LogoEmployees},
   props: {
     msg: String
   }

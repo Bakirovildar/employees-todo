@@ -1,7 +1,10 @@
 <template>
   <div>
-    <HeaderContent/>
-    <EmployeesList :employees="employees" @deleteEmploy="deleteEmploy"/>
+    <HeaderContent @clickAllChecked="clickAllChecked"/>
+    <EmployeesList
+        :employees="employees"
+        @deleteEmploy="deleteEmploy"
+    />
   </div>
 </template>
 
@@ -12,10 +15,13 @@ import EmployeesList from "@/components/HomePage/ContentEmployees/content/Employ
 export default {
   components: {EmployeesList, HeaderContent},
   props: ['employees'],
-  emits: ['deleteEmploy'],
+  emits: ['deleteEmploy', 'clickAllChecked'],
   methods: {
     deleteEmploy(id) {
       this.$emit('deleteEmploy', id)
+    },
+    clickAllChecked(check) {
+      this.$emit('clickAllChecked', check)
     }
   }
 }

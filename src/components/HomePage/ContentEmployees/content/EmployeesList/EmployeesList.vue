@@ -33,7 +33,7 @@
     >
       <div class="employ">
         <div class="employ-main">
-          <input type="checkbox" class="inp-checkbox">
+          <input type="checkbox" class="inp-checkbox" v-model="employ.isChecked">
           <span class="header-fio">{{employ.name}}</span>
           <span class="header-d">{{employ.job}}</span>
           <div class="employ-sdd">
@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      idMouse: ''
+      idMouse: '',
     }
   },
   methods: {

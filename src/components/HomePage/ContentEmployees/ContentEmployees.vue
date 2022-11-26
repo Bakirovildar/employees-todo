@@ -13,7 +13,11 @@
         <LogoSearch/>
       </div>
     </div>
-    <ContenPage :employees="filteredEmployees" @deleteEmploy="deleteEmploy"/>
+    <ContenPage
+        :employees="filteredEmployees"
+        @deleteEmploy="deleteEmploy"
+        @clickAllChecked="clickAllChecked"
+    />
   </div>
 </template>
 
@@ -26,7 +30,7 @@ import LogoSearch from "@/assets/LogoSearch";
 export default {
   components: {LogoSearch, ContenPage, ContentButtons, HeaderContent},
   props: ['employees'],
-  emits: ['deleteEmploy'],
+  emits: ['deleteEmploy', 'clickAllChecked'],
   beforeMount() {
     this.filteredEmployees = {...this.employees}
   },
@@ -61,12 +65,16 @@ export default {
             {
               id: 0,
               name: '-',
+              isChecked: '',
               job: '-',
               status: '-',
               dateStart: '-',
               dateGo: '-'
             }]}
       }
+    },
+    clickAllChecked(check) {
+      this.$emit('clickAllChecked', check)
     }
   }
 }

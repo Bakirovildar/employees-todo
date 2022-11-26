@@ -4,7 +4,7 @@
   </div>
   <div class="header">
     <div style="display: flex; align-items: center;">
-      <input type="checkbox" class="inp-checkbox">
+      <input type="checkbox" class="inp-checkbox" @input="clickIsAllChecked" v-model="isChecked">
       <span class="header-fio">ФИО</span>
       <span class="header-d">Должность</span>
       <div class="header-sdd">
@@ -19,7 +19,17 @@
 
 <script>
 export default {
-
+  emits: ['clickAllChecked'],
+  data() {
+    return {
+      isChecked: false
+    }
+  },
+  methods: {
+    clickIsAllChecked() {
+      this.$emit('clickAllChecked', !this.isChecked)
+    }
+  }
 }
 </script>
 

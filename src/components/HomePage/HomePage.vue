@@ -4,7 +4,11 @@
       <LogoEmployees/>
     </div>
 
-    <ContentEmployees :employees="employees" @deleteEmploy="deleteEmploy"/>
+    <ContentEmployees
+        :employees="employees"
+        @deleteEmploy="deleteEmploy"
+        @clickAllChecked="clickAllChecked"
+    />
   </div>
 </template>
 
@@ -26,6 +30,7 @@ export default {
           {
             id: 1,
             name: 'Иванов Иван Иванович',
+            isChecked: false,
             job: 'Водитель',
             status: 'Проходит',
             dateStart: '05.09.2022',
@@ -34,6 +39,7 @@ export default {
           {
             id: 2,
             name: 'Александров Андрей Сергеевич',
+            isChecked: false,
             job: 'Водитель',
             status: 'Проходит',
             dateStart: '05.09.2022',
@@ -42,6 +48,7 @@ export default {
           {
             id: 3,
             name: 'Иванов Иван Иванович',
+            isChecked: false,
             job: 'Водитель',
             status: 'Проходит',
             dateStart: '05.09.2022',
@@ -50,6 +57,7 @@ export default {
           {
             id: 4,
             name: 'Иванов Иван Иванович',
+            isChecked: false,
             job: 'Водитель',
             status: 'Проходит',
             dateStart: '05.09.2022',
@@ -58,6 +66,7 @@ export default {
           {
             id: 5,
             name: 'Иванов Иван Иванович',
+            isChecked: false,
             job: 'Водитель',
             status: 'Проходит',
             dateStart: '05.09.2022',
@@ -78,12 +87,16 @@ export default {
             {
               id: 0,
               name: '-',
+              isChecked: '',
               job: '-',
               status: '-',
               dateStart: '-',
               dateGo: '-'
             }]}
       }
+    },
+    clickAllChecked(check) {
+      this.employees.list.map(employ => employ.isChecked = check)
     }
   }
 }

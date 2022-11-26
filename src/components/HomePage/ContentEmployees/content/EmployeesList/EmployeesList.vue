@@ -1,14 +1,19 @@
 <template>
-  <div
+  <button
+      :disabled="employees.title === ''"
       @click="clickItem"
       @mouseenter="mouseEnter(null)"
       class="header-title">
     <div><span style="margin-right: 8px">{{ employees.title }}</span> <span
-        style="font-weight: 500;font-size: 16px;line-height: 21px;color: #E31243;">{{ employees.list.length }}</span>
+        style="font-weight: 500;font-size: 16px;line-height: 21px;color: #E31243;">{{ employees.title === '' ? 0 : employees.list.length}}</span>
     </div>
     <div>
       <LogoEdit/>
-      <LogoDelete/>
+      <span
+          @click.stop="deleteEmploy('Склад')"
+      >
+        <LogoDelete/>
+      </span>
       <span v-if="!isOpen">
         <LogoClose/>
       </span>
@@ -16,7 +21,7 @@
         <LogoOpen/>
       </span>
     </div>
-  </div>
+  </button>
 
   <div
       v-if="isOpen"
@@ -89,9 +94,12 @@ export default {
   align-items: end;
   justify-content: space-between;
   margin-top: 30px;
+  border: none;
   border-top: 1px solid #DBDADA;
+  background: white;
   height: 70px;
   cursor: pointer;
+  width: 100%;
 }
 
 .header-title:hover {

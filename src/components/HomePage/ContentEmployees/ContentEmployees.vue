@@ -54,6 +54,19 @@ export default {
       this.$emit('deleteEmploy', id)
       const newFilteredList = this.filteredEmployees.list.filter(employ => employ.id !== id)
       this.filteredEmployees.list = newFilteredList
+      if (id === 'Склад') {
+        this.filteredEmployees = {
+          title: '',
+          list: [
+            {
+              id: 0,
+              name: '-',
+              job: '-',
+              status: '-',
+              dateStart: '-',
+              dateGo: '-'
+            }]}
+      }
     }
   }
 }

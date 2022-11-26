@@ -38,7 +38,10 @@
           </div>
         </div>
         <div class="icons">
-          <div v-if="employ.id === this.idMouse"><LogoDelete /></div>
+          <div
+              v-if="employ.id === this.idMouse"
+              @click="deleteEmploy(employ.id)"
+          ><LogoDelete /></div>
           <LogoSend/>
         </div>
       </div>
@@ -56,6 +59,7 @@ import LogoOpen from "@/assets/LogoOpen";
 export default {
   components: {LogoOpen, LogoSend, LogoDelete, LogoEdit, LogoClose},
   props: ['employees'],
+  emits: ['deleteEmploy'],
   data() {
     return {
       isOpen: false,
@@ -63,6 +67,9 @@ export default {
     }
   },
   methods: {
+    deleteEmploy(id) {
+      this.$emit('deleteEmploy', id)
+    },
     clickItem() {
       this.isOpen = !this.isOpen
     },

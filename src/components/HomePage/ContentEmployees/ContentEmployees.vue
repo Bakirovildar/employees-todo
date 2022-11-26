@@ -1,7 +1,7 @@
 <template>
   <div class="contentEmployees">
     <HeaderContent/>
-    <ContentButtons />
+    <ContentButtons/>
     <div class="message-send-input">
       <input
           v-model="searchValue"
@@ -9,9 +9,11 @@
           placeholder="Поиск по ФИО"
           style="color: #8C9EB4;"
       >
-      <div class="message-send-input-add__file"><LogoSearch/></div>
+      <div class="message-send-input-add__file">
+        <LogoSearch/>
+      </div>
     </div>
-    <ContenPage :employees="filteredEmployees"/>
+    <ContenPage :employees="filteredEmployees" @deleteEmploy="deleteEmploy"/>
   </div>
 </template>
 
@@ -24,6 +26,7 @@ import LogoSearch from "@/assets/LogoSearch";
 export default {
   components: {LogoSearch, ContenPage, ContentButtons, HeaderContent},
   props: ['employees'],
+  emits: ['deleteEmploy'],
   beforeMount() {
     this.filteredEmployees = {...this.employees}
   },
@@ -46,6 +49,11 @@ export default {
       !val
           ? this.filteredEmployees.list = this.employees.list
           : this.filteredEmployees.list = productFilter
+    },
+    deleteEmploy(id) {
+      this.$emit('deleteEmploy', id)
+      const newFilteredList = this.filteredEmployees.list.filter(employ => employ.id !== id)
+      this.filteredEmployees.list = newFilteredList
     }
   }
 }

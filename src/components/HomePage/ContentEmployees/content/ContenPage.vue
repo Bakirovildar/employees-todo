@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderContent/>
-    <EmployeesList :employees="employees"/>
+    <EmployeesList :employees="employees" @deleteEmploy="deleteEmploy"/>
   </div>
 </template>
 
@@ -11,7 +11,13 @@ import EmployeesList from "@/components/HomePage/ContentEmployees/content/Employ
 
 export default {
   components: {EmployeesList, HeaderContent},
-  props: ['employees']
+  props: ['employees'],
+  emits: ['deleteEmploy'],
+  methods: {
+    deleteEmploy(id) {
+      this.$emit('deleteEmploy', id)
+    }
+  }
 }
 </script>
 

@@ -1,16 +1,17 @@
 <template>
   <div class="page-container">
     <div class="left-board">
-      <LogoEmployees />
+      <LogoEmployees/>
     </div>
 
-    <ContentEmployees :employees="employees" />
+    <ContentEmployees :employees="employees" @deleteEmploy="deleteEmploy"/>
   </div>
 </template>
 
 <script>
 import LogoEmployees from "@/assets/LogoEmployees";
 import ContentEmployees from "@/components/HomePage/ContentEmployees/ContentEmployees";
+
 export default {
   name: 'HomePage',
   components: {ContentEmployees, LogoEmployees},
@@ -64,6 +65,12 @@ export default {
           },
         ]
       },
+    }
+  },
+  methods: {
+    deleteEmploy(id) {
+      const newFilteredList = this.employees.list.filter(employ => employ.id !== id)
+      this.employees.list = newFilteredList
     }
   }
 }

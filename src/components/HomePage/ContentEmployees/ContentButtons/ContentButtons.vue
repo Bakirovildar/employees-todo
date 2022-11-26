@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .buttons-container {
   margin-top: 30px;
-  margin-left: 100px;
+  padding-left: 100px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -30,5 +30,6 @@ export default {
 
 .add-new-department {
   display: flex;
+  margin-right: 84px;
 }
 </style>

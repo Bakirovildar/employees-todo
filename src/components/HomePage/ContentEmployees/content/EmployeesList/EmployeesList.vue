@@ -24,13 +24,15 @@
         v-for="employ in employees.list"
         :key="employ.id">
       <div class="employ">
-        <div>
+        <div class="employ-main">
           <input type="checkbox" class="inp-checkbox">
           <span class="header-fio">{{employ.name}}</span>
           <span class="header-d">{{employ.job}}</span>
-          <span class="header-status">{{employ.status}}</span>
-          <span class="header-date">{{employ.dateStart}}</span>
-          <span class="header-date">{{employ.dateGo}}</span>
+          <div class="employ-sdd">
+            <span class="header-status">{{employ.status}}</span>
+            <span class="header-date">{{employ.dateStart}}</span>
+            <span class="header-date">{{employ.dateGo}}</span>
+          </div>
         </div>
         <div>
           <LogoSend/>
@@ -70,9 +72,8 @@ export default {
   align-items: end;
   justify-content: space-between;
   margin-top: 30px;
-  padding: 18px 18px;
   border-top: 1px solid #DBDADA;
-  height: 53px;
+  height: 70px;
   cursor: pointer;
 }
 
@@ -86,13 +87,18 @@ export default {
 
 .employ {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 18px 18px;
   border-top: 1px solid #DBDADA;
-  height: 40px;
+  height: 70px;
   margin-right: 10px;
   cursor: pointer;
+}
+
+.employ-main {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
 }
 
 .employ:hover {
@@ -100,23 +106,31 @@ export default {
 }
 
 .header-fio {
-  padding-right: 227px;
   color: black;
+  width: 670px;
+  text-align: start;
 }
 
 .header-d {
   padding-right: 160px;
+  width: 70px;
   color: black;
+}
+
+.employ-sdd {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .header-status {
-  padding-right: 100px;
-  color: #FF8800;;
+  color: #FF8800;
+  width: 70px;
 }
 
 .header-date {
-  padding-right: 100px;
   color: black;
+  width: 70px;
 }
 
 .inp-checkbox {

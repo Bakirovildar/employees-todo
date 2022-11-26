@@ -3,12 +3,17 @@
     <span>Показаны записи 1-113 из 113.</span>
   </div>
   <div class="header">
-    <input type="checkbox" class="inp-checkbox">
-    <span class="header-fio">ФИО</span>
-    <span class="header-d">Должность</span>
-    <span class="header-status">Статус МО</span>
-    <span class="header-date">Дата записи</span>
-    <span class="header-date">Дата прохождения</span>
+    <div style="display: flex; align-items: center;">
+      <input type="checkbox" class="inp-checkbox">
+      <span class="header-fio">ФИО</span>
+      <span class="header-d">Должность</span>
+      <div class="header-sdd">
+        <span class="header-status">Статус МО</span>
+        <span class="header-date">Дата записи</span>
+        <span class="header-date2">Дата прохождения</span>
+      </div>
+    </div>
+    <div></div>
   </div>
 </template>
 
@@ -38,8 +43,12 @@ export default {
 }
 
 .header-fio {
-  padding-right: 360px;
-  color: #E31243;
+  display: flex;
+  justify-content: start;
+  padding-right: 210px;
+  color: black;
+  width: 200px;
+  min-width: 100px;
 }
 
 .header-d {
@@ -47,14 +56,24 @@ export default {
   color: #E31243;
 }
 
+.header-sdd {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .header-status {
-  padding-right: 90px;
   color: #E31243;
+  padding-right: 106px;
 }
 
 .header-date {
-  padding-right: 70px;
   color: #E31243;
+}
+
+.header-date2 {
+  color: #E31243;
+  padding-left: 92px;
 }
 
 .inp-checkbox {

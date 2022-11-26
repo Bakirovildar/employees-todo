@@ -11,7 +11,7 @@
       >
       <div class="message-send-input-add__file"><LogoSearch/></div>
     </div>
-    <ContenPage/>
+    <ContenPage :employees="employees"/>
   </div>
 </template>
 
@@ -25,7 +25,52 @@ export default {
   components: {LogoSearch, ContenPage, ContentButtons, HeaderContent},
   data() {
     return {
-      searchValue: ''
+      searchValue: '',
+      employees: {
+        title: 'Склад',
+        list: [
+          {
+            id: 1,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 2,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 3,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 4,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 5,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+        ]
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div
       @click="clickItem"
+      @mouseenter="mouseEnter(null)"
       class="header-title">
     <div><span style="margin-right: 8px">{{ employees.title }}</span> <span
         style="font-weight: 500;font-size: 16px;line-height: 21px;color: #E31243;">{{ employees.list.length }}</span>
@@ -22,7 +23,9 @@
   >
     <div
         v-for="employ in employees.list"
-        :key="employ.id">
+        :key="employ.id"
+        @mouseenter="mouseEnter(employ)"
+    >
       <div class="employ">
         <div class="employ-main">
           <input type="checkbox" class="inp-checkbox">
@@ -34,7 +37,8 @@
             <span class="header-date">{{employ.dateGo}}</span>
           </div>
         </div>
-        <div>
+        <div class="icons">
+          <div v-if="employ.id === this.idMouse"><LogoDelete /></div>
           <LogoSend/>
         </div>
       </div>
@@ -54,12 +58,18 @@ export default {
   props: ['employees'],
   data() {
     return {
-      isOpen: false
+      isOpen: false,
+      idMouse: ''
     }
   },
   methods: {
     clickItem() {
       this.isOpen = !this.isOpen
+    },
+    mouseEnter(e) {
+      e
+          ? this.idMouse = e.id
+          : this.idMouse = null
     }
   }
 }
@@ -136,5 +146,10 @@ export default {
 .inp-checkbox {
   background: #E31243;
   margin-right: 16px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
 }
 </style>

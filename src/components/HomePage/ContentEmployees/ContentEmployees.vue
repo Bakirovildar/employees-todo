@@ -11,7 +11,7 @@
       >
       <div class="message-send-input-add__file"><LogoSearch/></div>
     </div>
-    <ContenPage :employees="employees"/>
+    <ContenPage :employees="filteredEmployees"/>
   </div>
 </template>
 
@@ -23,54 +23,29 @@ import LogoSearch from "@/assets/LogoSearch";
 
 export default {
   components: {LogoSearch, ContenPage, ContentButtons, HeaderContent},
+  props: ['employees'],
+  beforeMount() {
+    this.filteredEmployees = {...this.employees}
+  },
   data() {
     return {
       searchValue: '',
-      employees: {
-        title: 'Склад',
-        list: [
-          {
-            id: 1,
-            name: 'Иванов Иван Иванович',
-            job: 'Водитель',
-            status: 'Проходит',
-            dateStart: '05.09.2022',
-            dateGo: '05.09.2022'
-          },
-          {
-            id: 2,
-            name: 'Иванов Иван Иванович',
-            job: 'Водитель',
-            status: 'Проходит',
-            dateStart: '05.09.2022',
-            dateGo: '05.09.2022'
-          },
-          {
-            id: 3,
-            name: 'Иванов Иван Иванович',
-            job: 'Водитель',
-            status: 'Проходит',
-            dateStart: '05.09.2022',
-            dateGo: '05.09.2022'
-          },
-          {
-            id: 4,
-            name: 'Иванов Иван Иванович',
-            job: 'Водитель',
-            status: 'Проходит',
-            dateStart: '05.09.2022',
-            dateGo: '05.09.2022'
-          },
-          {
-            id: 5,
-            name: 'Иванов Иван Иванович',
-            job: 'Водитель',
-            status: 'Проходит',
-            dateStart: '05.09.2022',
-            dateGo: '05.09.2022'
-          },
-        ]
-      }
+      filteredEmployees: '',
+    }
+  },
+  watch: {
+    searchValue(val) {
+      this.filterEmployees(val)
+    }
+  },
+  methods: {
+    filterEmployees(value) {
+      const copyEmployees = [...this.filteredEmployees.list]
+      const val = this.searchValue
+      const productFilter = copyEmployees.filter(i => i.name.includes(value))
+      !val
+          ? this.filteredEmployees.list = this.employees.list
+          : this.filteredEmployees.list = productFilter
     }
   }
 }

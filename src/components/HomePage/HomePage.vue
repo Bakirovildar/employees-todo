@@ -4,7 +4,7 @@
       <LogoEmployees />
     </div>
 
-    <ContentEmployees />
+    <ContentEmployees :employees="employees" />
   </div>
 </template>
 
@@ -16,6 +16,55 @@ export default {
   components: {ContentEmployees, LogoEmployees},
   props: {
     msg: String
+  },
+  data() {
+    return {
+      employees: {
+        title: 'Склад',
+        list: [
+          {
+            id: 1,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 2,
+            name: 'Александров Андрей Сергеевич',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 3,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 4,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+          {
+            id: 5,
+            name: 'Иванов Иван Иванович',
+            job: 'Водитель',
+            status: 'Проходит',
+            dateStart: '05.09.2022',
+            dateGo: '05.09.2022'
+          },
+        ]
+      },
+    }
   }
 }
 </script>
